@@ -5,16 +5,15 @@ import PropTypes from "prop-types";
 import shortid from 'shortid';
 import './ContactForm.css';
 
-const initialState = {
-    name: '',
-    number: ''
-}
+// const initialState = {
+//     name: '',
+//     number: ''
+// }
 
 class ContactForm extends Component {
     state = {
-        // name: '',
-        // number: ''
-        ...initialState
+        name: '',
+        number: ''
     }
 
     nameInputId = shortid.generate();
@@ -29,19 +28,17 @@ class ContactForm extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        this.props.onSubmit({
-            ...this.state
-            // name: '',
-            // number: ''
-        })
+        this.props.onSubmit(
+            this.state.name,
+            this.state.number
+        )
         this.reset()
     }
 
     reset = () => {
         this.setState({
-            ...initialState
-            // name: '',
-            // number: ''
+            name: '',
+            number: ''
         })
     }
 
@@ -90,7 +87,7 @@ ContactForm.propTypes = {
 };
 
 const mapDispatchToProps = dispatch => ({
-    onSubmit: (contact) => dispatch(contactsActions.addContacts(contact))
+    onSubmit: (name, number) => dispatch(contactsActions.addContacts(name, number))
 })
 
 export default connect(null, mapDispatchToProps)(ContactForm)

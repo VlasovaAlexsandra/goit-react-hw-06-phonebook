@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 // import shortid from 'shortid';
 import ContactForm from './components/Form/ContactForm/ContactForm';
-// import Filter from './components/Form/Filter/Filter';
-// import ContactList from './components/Form/ContactList/ContactList';
-// import initialContacts from './contacts.json';
+import Filter from './components/Form/Filter/Filter';
+import ContactList from './components/Form/ContactList/ContactList';
+import initialContacts from './contacts.json';
 import './App.css'
 // import PropTypes from 'prop-types';
 
 
 
 class App extends Component {
-  // state = {
-  //   contacts: initialContacts,
-  //   filter: '',
-  // }
+  state = {
+    contacts: initialContacts,
+    filter: '',
+  }
 
   // componentDidMount() {
   //   const contacts = localStorage.getItem('contacts')
@@ -51,23 +51,23 @@ class App extends Component {
   //   }
   // }
 
-  deleteContact = id => {
-    this.setState(prevState => ({
-      contacts: prevState.contacts.filter(contact => contact.id !== id)
-    }))
-  }
+  // deleteContact = id => {
+  //   this.setState(prevState => ({
+  //     contacts: prevState.contacts.filter(contact => contact.id !== id)
+  //   }))
+  // }
 
-  changeFilter = (filter) => {
-    this.setState({ filter });
-  };
+  // changeFilter = (filter) => {
+  //   this.setState({ filter });
+  // };
 
-  getVisibleContacts = () => {
-    const { contacts, filter } = this.state;
+  // getVisibleContacts = () => {
+  //   const { contacts, filter } = this.state;
 
-    return contacts.filter((contacts) =>
-      contacts.name.toLowerCase().includes(filter.toLowerCase())
-    );
-  };
+  //   return contacts.filter((contacts) =>
+  //     contacts.name.toLowerCase().includes(filter.toLowerCase())
+  //   );
+  // };
 
   removeContact = (contactId) => {
     this.setState((prevState) => {
@@ -89,13 +89,14 @@ class App extends Component {
         // onSubmit={this.addContact}
         />
         <h2 className="Title">Contacts</h2>
-        {/* <Filter
-          value={filter}
-          onChangeFilter={this.changeFilter} />
+        <Filter
+        // value={filter}
+        // onChangeFilter={this.changeFilter}
+        />
         <ContactList
-          contacts={visibleContacts}
-          onDeleteContact={this.deleteContact}
-        /> */}
+        // contacts={visibleContacts}
+        // onDeleteContact={this.deleteContact}
+        />
       </>
 
     )

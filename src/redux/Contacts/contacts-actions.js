@@ -1,12 +1,24 @@
 import shortid from 'shortid';
 import types from './contacts-types'
 
-const addContacts = contact => ({
+const addContacts = (name, number) => ({
     type: types.ADD,
     payload: {
         id: shortid.generate(),
-        contact
+        name: name,
+        number: number
     }
 })
 
-export default addContacts
+const deleteContacts = id => ({
+    type: types.DELETE,
+    payload: id,
+})
+
+const changeFilter = value => ({
+    type: types.CHANGE_FILTER,
+    payload: value
+})
+
+// eslint-disable-next-line
+export default { addContacts, deleteContacts, changeFilter }
