@@ -4,10 +4,10 @@ import contactsActions from '../../../redux/Contacts/contacts-actions'
 import PropTypes from "prop-types";
 import shortid from 'shortid';
 import './ContactForm.css';
+// import initialContacts from '../../../contacts.json';
 
 // const initialState = {
-//     name: '',
-//     number: ''
+//     contacts: initialContacts,
 // }
 
 class ContactForm extends Component {
@@ -32,7 +32,7 @@ class ContactForm extends Component {
             this.state.name,
             this.state.number
         )
-        // const searchSameName = initialState
+        // const searchSameName = initialState.contacts
         //     .map((contact) => contact.name)
         //     .includes(this.state.name);
 
@@ -42,7 +42,7 @@ class ContactForm extends Component {
         //     alert("Fields must be filled!");
         // } else {
         //     this.setState((prevState) => ({
-        //         contacts: [...prevState.contacts, initialState],
+        //         contacts: [...prevState.contacts, initialState.contacts],
         //     }));
         // }
 
