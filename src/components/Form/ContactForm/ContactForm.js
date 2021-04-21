@@ -32,6 +32,20 @@ class ContactForm extends Component {
             this.state.name,
             this.state.number
         )
+        // const searchSameName = initialState
+        //     .map((contact) => contact.name)
+        //     .includes(this.state.name);
+
+        // if (searchSameName) {
+        //     alert(`${this.state.name} is already in contacts`);
+        // } else if (this.state.name.length === 0) {
+        //     alert("Fields must be filled!");
+        // } else {
+        //     this.setState((prevState) => ({
+        //         contacts: [...prevState.contacts, initialState],
+        //     }));
+        // }
+
         this.reset()
     }
 

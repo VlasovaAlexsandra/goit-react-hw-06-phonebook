@@ -3,17 +3,17 @@ import React, { Component } from 'react';
 import ContactForm from './components/Form/ContactForm/ContactForm';
 import Filter from './components/Form/Filter/Filter';
 import ContactList from './components/Form/ContactList/ContactList';
-import initialContacts from './contacts.json';
+// import initialContacts from './contacts.json';
 import './App.css'
 // import PropTypes from 'prop-types';
 
 
 
 class App extends Component {
-  state = {
-    contacts: initialContacts,
-    filter: '',
-  }
+  // state = {
+  //   contacts: initialContacts,
+  //   filter: '',
+  // }
 
   // componentDidMount() {
   //   const contacts = localStorage.getItem('contacts')
@@ -69,13 +69,13 @@ class App extends Component {
   //   );
   // };
 
-  removeContact = (contactId) => {
-    this.setState((prevState) => {
-      return {
-        contacts: prevState.contacts.filter(({ id }) => id !== contactId),
-      };
-    });
-  };
+  // removeContact = (contactId) => {
+  //   this.setState((prevState) => {
+  //     return {
+  //       contacts: prevState.contacts.filter(({ id }) => id !== contactId),
+  //     };
+  //   });
+  // };
 
   render() {
     // const { filter } = this.state;
