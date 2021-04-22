@@ -28,21 +28,11 @@ ContactList.propTypes = {
 
 const getVisibleContacts = (allContacts, filter) => {
     const normalizedFilter = filter.toLowerCase()
-    // const { contacts, filter } = this.state;
 
     return allContacts.filter((contacts) =>
         contacts.name.toLowerCase().includes(normalizedFilter)
     );
-};
-
-// const mapStateToProps = state => {
-//     const { items, filter } = state.contacts
-
-//     const visibleContacts = getVisibleContacts(items, filter)
-//     return {
-//         contacts: visibleContacts
-//     }
-// }
+}
 
 const mapStateToProps = ({ contacts: { items, filter } }) => ({
     contacts: getVisibleContacts(items, filter)

@@ -6,8 +6,6 @@ import { PersistGate } from 'redux-persist/integration/react'
 import store from './redux/Contacts/store'
 import 'modern-normalize/modern-normalize.css'
 
-// console.log(store)
-
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store.store}>

@@ -1,4 +1,3 @@
-// import { combineReducers } from 'redux'
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit'
 import logger from 'redux-logger'
 import {
@@ -13,13 +12,6 @@ import {
 } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import contactsReducer from './contacts-reducer'
-
-
-// const rootReducer = combineReducers({
-//     contacts: contactsReducer
-// })
-
-// const store = createStore(rootReducer, composeWithDevTools())
 
 const contactsPersistConfig = {
     key: 'contacts',
@@ -39,12 +31,6 @@ const middleware = [
         }
     }),
     logger]
-
-// const rootReducer = combineReducers({
-//     contacts: persistReducer(persistConfig, contactsReducer)
-// })
-
-// const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 const store = configureStore({
     reducer: {

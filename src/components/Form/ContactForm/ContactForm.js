@@ -12,7 +12,6 @@ import './ContactForm.css';
 
 class ContactForm extends Component {
     state = {
-        // contacts: initialContacts,
         name: '',
         number: ''
     }
@@ -30,43 +29,18 @@ class ContactForm extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         if (this.props.contacts.map(({ name }) => name).includes(this.state.name)) {
-            alert('Контакт уже есть')
+            alert(`${this.state.name} is already in contacts`)
             return
         }
-        // const contact = {
-        //     ...this.state.contacts
-        // }
-        // const searchSameName = this.state.contacts
-        //     .map((contact) => contact.name)
-        //     .includes(this.state.name);
-        // if (searchSameName) {
-        //     alert(`${this.state.name} is already in contacts`);
-        // } else if (this.state.name.length === 0) {
-        //     alert("Fields must be filled!");
-        // } else {
-        //     this.setState((prevState) => ({
-        //         contacts: [...prevState.contacts, contact],
-        //     }));
-        // }
-
-
         this.props.onSubmit(
             this.state.name,
             this.state.number,
-
         )
-
-
-
-
         this.reset()
     }
 
     reset = () => {
-        this.setState({
-            name: '',
-            number: ''
-        })
+        this.setState({ name: '', number: '' })
     }
 
     render() {
@@ -80,8 +54,8 @@ class ContactForm extends Component {
                         type="text"
                         value={this.state.name}
                         name="name"
-                        // pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-                        // title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
+                        pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+                        title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
                         required
                         onChange={this.handleChange}
                         id={this.nameInputId}
@@ -94,8 +68,8 @@ class ContactForm extends Component {
                         type="text"
                         value={this.state.number}
                         name="number"
-                        // pattern="(\+?( |-|\.)?\d{1,2}( |-|\.)?)?(\(?\d{3}\)?|\d{3})( |-|\.)?(\d{3}( |-|\.)?\d{4})"
-                        // title="Номер телефона должен состоять из 11-12 цифр и может содержать цифры, пробелы, тире, пузатые скобки и может начинаться с +"
+                        pattern="(\+?( |-|\.)?\d{1,2}( |-|\.)?)?(\(?\d{3}\)?|\d{3})( |-|\.)?(\d{3}( |-|\.)?\d{4})"
+                        title="Номер телефона должен состоять из 11-12 цифр и может содержать цифры, пробелы, тире, пузатые скобки и может начинаться с +"
                         required
                         onChange={this.handleChange}
                         id={this.numberInputId}
@@ -120,7 +94,5 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
     onSubmit: (name, number) => dispatch(contactsActions.addContacts(name, number))
 })
-
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactForm)
