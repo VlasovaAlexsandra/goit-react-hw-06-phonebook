@@ -12,6 +12,7 @@ import './ContactForm.css';
 
 class ContactForm extends Component {
     state = {
+        // contacts: initialContacts,
         name: '',
         number: ''
     }
@@ -28,23 +29,35 @@ class ContactForm extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        this.props.onSubmit(
-            this.state.name,
-            this.state.number
-        )
-        // const searchSameName = initialState.contacts
+        if (this.props.contacts.map(({ name }) => name).includes(this.state.name)) {
+            alert('Контакт уже есть')
+            return
+        }
+        // const contact = {
+        //     ...this.state.contacts
+        // }
+        // const searchSameName = this.state.contacts
         //     .map((contact) => contact.name)
         //     .includes(this.state.name);
-
         // if (searchSameName) {
         //     alert(`${this.state.name} is already in contacts`);
         // } else if (this.state.name.length === 0) {
         //     alert("Fields must be filled!");
         // } else {
         //     this.setState((prevState) => ({
-        //         contacts: [...prevState.contacts, initialState.contacts],
+        //         contacts: [...prevState.contacts, contact],
         //     }));
         // }
+
+
+        this.props.onSubmit(
+            this.state.name,
+            this.state.number,
+
+        )
+
+
+
 
         this.reset()
     }
@@ -100,8 +113,14 @@ ContactForm.propTypes = {
     onSubmit: PropTypes.func.isRequired,
 };
 
+const mapStateToProps = state => {
+    return { contacts: state.contacts.items };
+};
+
 const mapDispatchToProps = dispatch => ({
     onSubmit: (name, number) => dispatch(contactsActions.addContacts(name, number))
 })
 
-export default connect(null, mapDispatchToProps)(ContactForm)
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(ContactForm)
